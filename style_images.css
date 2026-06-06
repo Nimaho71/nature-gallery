@@ -5,6 +5,7 @@ body {
     margin: 0rem;
     overflow: hidden;
     animation: body_intro 5s;
+    touch-action: none;
     
 }
 #image-track > .image {
@@ -26,6 +27,7 @@ body {
     left: 50%; top: 50%; transform: translate(0%, -50%);
     user-select: none;
     animation: intro 5s ease-in;
+    z-index: 1;
 }
 
 h1 {
@@ -40,6 +42,7 @@ h1 {
     -webkit-background-clip: text; 
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    z-index: 2;
 }
 
 h2 {    
@@ -63,60 +66,18 @@ h2 {
 }
 
 
-#yt-link > i {
-    color: rgb(239, 83, 80);
-  }
-  
-  .meta-link {
-    align-items: center;
-    backdrop-filter: blur(3px);
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    bottom: 10px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
-    cursor: pointer;  
-    display: inline-flex;
-    gap: 5px;
-    left: 10px;
-    padding: 10px 20px;
-    position: fixed;
-    text-decoration: none;
-    transition: background-color 400ms, border-color 400ms;
-    z-index: 10000;
-    animation: hide_appear 6s;
-  }
-  
-  .meta-link:hover {
-    background-color: rgba(166, 146, 146, 0.1);
-    border: 1.5px solid rgba(255, 255, 255, 0.721);
-  }
-  
-  .meta-link > i, .meta-link > span {
-    height: 30px;
-    line-height: 30px;
-  }
-  
-  .meta-link > span {
-    color: white;
-    font-family: "Rubik", sans-serif;
-    font-weight: 500;
-  }
 #blob {
-    background-color: white;
     height: 500px;
     aspect-ratio: 1;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    translate: -50% -50%;
+    position: fixed;
+    left: 0;
+    top: 0;
     border-radius: 50%;
     background: linear-gradient(
         to right,
         rgb(38, 198, 38),
         rgb(62, 62, 226)
     );
-    animation: rotate 20s infinite;
     filter: blur(200px)
 }
 
@@ -124,16 +85,6 @@ h2 {
     animation: hide 1s forwards;
 }
 
-
-@keyframes rotate {
-    from {
-        rotate: 0deg;
-    }
-
-    to {
-        rotate: 360deg;
-    }
-}
 
 @keyframes body_intro {
     0% {
@@ -153,15 +104,15 @@ h2 {
 
 @keyframes intro {
     0% {
-        transform: translateX(-100%);
+        transform: translate(-100%, -50%);
     }
 
     30% {
-        transform: translateX(-80%);
+        transform: translate(-80%, -50%);
     }
 
     100% {
-        transform: translateX(0%);
+        transform: translate(0%, -50%);
     }
 }
 
@@ -190,3 +141,27 @@ h2 {
     }
 }
 
+#back-link {
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    bottom: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+    color: white;
+    display: inline-flex;
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    left: 10px;
+    padding: 10px 20px;
+    position: fixed;
+    text-decoration: none;
+    transition: background-color 400ms, border-color 400ms;
+    z-index: 10000;
+    animation: hide_appear 6s;
+}
+
+#back-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.7);
+}
