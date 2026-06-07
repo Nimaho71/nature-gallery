@@ -56,11 +56,10 @@ h2 {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
     display: inline-flex;
     gap: 5px;
-    left: 10px;
+    right: 10px;
     padding: 10px 20px;
     position: fixed;
     z-index: 10000;
-    transform: translateX(230%);
     animation: hide_appear 6s;
     
 }
@@ -164,4 +163,121 @@ h2 {
 #back-link:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ─── card overlay ─────────────────────────────────────────────────────────── */
+
+#card-overlay {
+    align-items: center;
+    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.88);
+    display: flex;
+    gap: 2.5vw;
+    inset: 0;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    transition: opacity 0.35s ease;
+    z-index: 20000;
+}
+
+#card-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#card-frame {
+    aspect-ratio: 5 / 7;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.92);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: min(calc(82vh * 5 / 7), 80vw);
+}
+
+#card-overlay.open #card-frame {
+    transform: scale(1);
+}
+
+#card-img {
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.2s ease;
+    width: 100%;
+}
+
+#card-info {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.68));
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    left: 0;
+    padding: 50px 20px 18px;
+    position: absolute;
+    right: 0;
+}
+
+#card-location {
+    color: white;
+    font-family: "Space Mono", monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    opacity: 0.9;
+}
+
+#card-counter {
+    color: rgba(255, 255, 255, 0.45);
+    font-family: "Space Mono", monospace;
+    font-size: 0.72rem;
+}
+
+#card-close {
+    backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.45);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    height: 36px;
+    line-height: 36px;
+    position: absolute;
+    right: 14px;
+    text-align: center;
+    top: 14px;
+    transition: background 300ms, border-color 300ms;
+    width: 36px;
+    z-index: 1;
+}
+
+#card-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.card-nav {
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    flex-shrink: 0;
+    font-size: 2rem;
+    height: 52px;
+    line-height: 52px;
+    text-align: center;
+    transition: background 300ms, border-color 300ms;
+    width: 52px;
+}
+
+.card-nav:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.5);
 }
